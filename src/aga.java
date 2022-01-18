@@ -14,15 +14,15 @@ public class aga {
     static String nameFile = "test.txt";   // Имя Файла оригинал не зашифрованый
     static String nameFileNew = "notes4.txt"; // ИмяФайла который будет зашифрованый уже
     static String nameFileForDeshefrovka = "notes6.txt"; // ИмяФайла который будет расшифрован
-    static int smeshenie=1; // Смещение если мы типа его знаем
+    static int smeshenie=30; // Смещение если мы типа его знаем
 
 
     public static void main(String[] args) throws IOException {
         napolnenieMap()    ;
          // podchetSimvolov(readFile());     // Нужно внутри методов
-      //    shifr(readFile());              // Шифруем файл
-         reshifrofka(readFile());              // Расшифровываем файл не зная смещение
-     //   rashifrovka(readFileForDeshefrofka(),smeshenie);// расшифровка зная смешение
+          shifr(readFile());              // Шифруем файл
+         reshifrofka(readFileForDeshefrofka());              // Расшифровываем файл не зная смещение
+  // rashifrovka(readFileForDeshefrofka(),smeshenie);// расшифровка зная смешение
     }
 
     public static void shifr(List<String> spisok) throws IOException {
@@ -141,6 +141,7 @@ public class aga {
         smechenie=(42+(hashMapNotOver.get(simvol)))%41;
         System.out.println(smechenie);
         String ss="";
+
         ArrayList<String> pavilno = new ArrayList();
         for (String s :spisok ) {
             char[] mass= s.toCharArray();
@@ -148,7 +149,7 @@ public class aga {
 
                 if (hashMap.get(mass[i])!=null) {
                     if (hashMapNotOver.get(mass[i])-smechenie<0) {
-                        ss = ss + hashMapOver.get(41 - smechenie);
+                        ss = ss + hashMapOver.get(hashMapNotOver.get(mass[i])-smechenie+41);
                     }else{
 
                         ss = ss + hashMapOver.get(hashMapNotOver.get(mass[i])-smechenie);
@@ -171,7 +172,7 @@ public class aga {
         writer.close();
     } // Расшифровка не знаем смещенеие
     public static void rashifrovka(List<String>spisok,int smechenie) throws IOException {
-        System.out.println(smechenie);
+
         String ss="";
         FileWriter writer = new FileWriter(nameFileForDeshefrovka);
         ArrayList<String> pavilno = new ArrayList();
@@ -181,7 +182,7 @@ public class aga {
 
                 if (hashMap.get(mass[i])!=null) {
                     if (hashMapNotOver.get(mass[i])-smechenie<0) {
-                        ss = ss + hashMapOver.get(41 - smechenie);
+                        ss = ss + hashMapOver.get(hashMapNotOver.get(mass[i])-smechenie+41);
                     }else{
 
                         ss = ss + hashMapOver.get(hashMapNotOver.get(mass[i])-smechenie);

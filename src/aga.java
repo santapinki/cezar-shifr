@@ -14,7 +14,7 @@ public class aga {
     static String nameFile = "test.txt";   // Имя Файла оригинал не зашифрованый
     static String nameFileNew = "notes4.txt"; // ИмяФайла который будет зашифрованый уже
     static String nameFileForDeshefrovka = "notes6.txt"; // ИмяФайла который будет расшифрован
-    static int smeshenie=1;
+    static int smeshenie=1; // Смещение если мы типа его знаем
 
 
     public static void main(String[] args) throws IOException {
